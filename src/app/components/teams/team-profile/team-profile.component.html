@@ -1,0 +1,43 @@
+<!-- Page Heading
+================================================== -->
+<div class="page-heading">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-10 offset-md-1">
+              <h1 class="page-heading__title">{{team.name}}</h1>
+              <ol class="page-heading__breadcrumb breadcrumb">
+                  <li class="breadcrumb-item"><a routerLink="/">Inicio</a></li>
+                  <li class="breadcrumb-item"><a routerLink="/teams">Equipos</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{team.name}}</li>
+              </ol>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<!-- Team Pages Filter -->
+<nav class="content-filter">
+  <div class="container">
+      <a href="#" class="content-filter__toggle"></a>
+      <ul class="content-filter__list">
+          <li class="content-filter__item "><a routerLink="info" [state]="{hello:'hello world'}" class="content-filter__link"><small>The Team</small>Info</a></li>
+          <li class="content-filter__item "><a routerLink="roster" class="content-filter__link"><small>The Team</small>Planilla</a></li>
+          <li class="content-filter__item "><a routerLink="standings" class="content-filter__link"><small>Tabla de </small>Posiciones</a></li>
+          <li class="content-filter__item "><a routerLink="last-results" class="content-filter__link"><small>The Team</small>Últimos Resultados</a></li>
+          <li class="content-filter__item "><a routerLink="schedule" class="content-filter__link"><small>The Team</small>Programación</a></li>
+      </ul>
+  </div>
+</nav>
+<!-- Team Pages Filter / End -->
+
+
+<div class="site-content">
+
+  
+  <router-outlet></router-outlet>
+      
+
+</div>
+
