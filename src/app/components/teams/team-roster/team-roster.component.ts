@@ -24,12 +24,14 @@ export class TeamRosterComponent implements OnInit {
     console.log("Init");
 
     this.team = this.srv.teamActive;
-    console.log("team",  this.team);
-
-    this.srv.getTeamActive().subscribe( teamActive =>{
-      this.team = teamActive;
-      this.findPlayers();
-    });
+    if(! this.team ){
+      this.srv.getTeamActive().subscribe( teamActive =>{
+        this.team = teamActive;
+        this.findPlayers();
+      });
+    }else{
+      this.findPlayers();  
+    }
   }
 
   findPlayers(){
