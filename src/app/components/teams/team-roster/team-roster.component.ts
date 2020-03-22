@@ -12,16 +12,17 @@ export class TeamRosterComponent implements OnInit {
 
   team:Team;
   players:Player[];
+  featuredPlayer:Player;
 
   constructor(
-    private srv:TeamsService    
-  ) {
-    console.log("Constructor");
-   }
+    private srv:TeamsService
+  ) {}
 
   ngOnInit() {
 
-    console.log("Init");
+    this.team = new Team();
+    this.players = [];
+    this.team.players = this.players;
 
     this.team = this.srv.teamActive;
     if(! this.team ){
@@ -34,11 +35,17 @@ export class TeamRosterComponent implements OnInit {
     }
   }
 
+  /**
+   * 
+   */
   findPlayers(){
     this.srv.players( this.team.nameURL ).subscribe( players =>{
       this.team.players = players;
       this.players = players;
-      console.log(this.team);
+      if( players ){
+        this.featuredPlayer = players[0];
+      }
+      console.log(this.players);
     });
   }
 

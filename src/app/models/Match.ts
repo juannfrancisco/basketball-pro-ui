@@ -11,4 +11,8 @@ export class Match {
     scoreLocal:number;
     scoreVisitor:number;
 
+    // Web Handlers
+    status?:string;
+    versus?:Team;
+    result?:string;
 }

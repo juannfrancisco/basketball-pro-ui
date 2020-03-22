@@ -1,3 +1,4 @@
+import { ChampionshipTeam } from './../models/ChampionshipTeam';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
@@ -50,6 +51,15 @@ export class TeamsService {
 
   players( nameURL:string ){
     return this.http.get<Player[]>(environment.apiEndpoint + "teams/n/"+ nameURL + "/players" );
+  }
+
+
+  standings( nameURL:string ){
+    return this.http.get<ChampionshipTeam[]>(environment.apiEndpoint + "teams/n/"+ nameURL + "/standings" );
+  }
+
+  findMatches( nameURL:string ){
+    return this.http.get<Match[]>(environment.apiEndpoint + "teams/n/"+ nameURL + "/matches" );
   }
 
  
