@@ -18,7 +18,3 @@ steps:
   - id: 'Upload Files to Storage'
     name: gcr.io/cloud-builders/gsutil
     args: ['-m','cp', '-r', 'dist/basktball-pro-ui/*', 'gs://basketball-pro-ui']
-  
-  - id: 'Set Public on Storage'
-    name: gcr.io/cloud-builders/gsutil
-    args: ['-m','acl','-r','ch','-u','AllUsers:R', 'gs://basketball-pro-ui/*'] 
