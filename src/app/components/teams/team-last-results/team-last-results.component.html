@@ -46,7 +46,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                          <tr data-ng-repeat="match in matches | orderBy:'-date'" data-ng-click="goGame(match)" >
+                          <tr *ngFor="let match of matches" (click)="goGame( match )" >
                               <td class="team-result__date">{{match.date | date}}</td>
                               <td class="team-result__vs">
                                   <div class="team-meta">
@@ -54,7 +54,7 @@
                                           <img src="assets/images/samples/logos/sharks_shield.png" alt="">
                                       </figure>
                                       <div class="team-meta__info">
-                                          <h6 class="team-meta__name">{{match.versus.name}}</h6>
+                                          <h6 class="team-meta__name">{{match.versus?.name}}</h6>
                                           <span class="team-meta__place">Marine College</span>
                                       </div>
                                   </div>

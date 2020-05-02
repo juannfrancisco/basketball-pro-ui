@@ -4,9 +4,9 @@
       <div class="container">
   
           <!-- Team Standings -->
-          <div class="card card--has-table" data-ng-repeat="champion in championships" >
+          <div class="card card--has-table" >
               <div class="card__header">
-                  <h4>{{champion.name}} Standings</h4>
+                  <h4>{{championship?.name}} Standings</h4>
               </div>
               <div class="card__content">
                   <div class="table-responsive">
@@ -22,7 +22,7 @@
                               </tr>
                           </thead>
                           <tbody>
-                              <tr data-ng-repeat="standing in champion.standings" >
+                              <tr *ngFor="let standing of standings" >
                                   <td class="team-standings__pos">01</td>
                                   <td class="team-standings__team">
                                       <div class="team-meta">

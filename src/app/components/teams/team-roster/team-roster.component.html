@@ -1,56 +1,14 @@
 <div class="container">
 
-    asdads
-    {{team.players|json}} --
-    {{players|json}}<br/>
-    {{team|json}}
-
-  <!-- Team Roster: Slider -->
-  <div class="team-roster team-roster--slider" *ngIf="team.players"> 
-      <!-- Player #0-->
-      <div class="team-roster__item" ng-repeat="player in team.players | orderBy :'number'">
-          <!-- Player Photo -->
-          <figure class="team-roster__img">
-              <img src="assets/images/samples/rosterv2_player_01.png" alt="">
-              <div class="team-roster__img-ring-top"></div>
-              <div class="team-roster__img-ring-bottom"></div>
-          </figure>
-          <!-- Player Photo / End-->
-          <!-- Player Details -->
-          <div class="team-roster__player-details">
-              <div class="team-roster__player-number">{{player.number}}</div>
-              <div class="team-roster__player-info">
-                  <h3 class="team-roster__player-name">
-                      <span class="team-roster__player-first-name">{{player.name}}</span>
-                      <span class="team-roster__player-last-name">{{player.lastName}}</span>
-                  </h3>
-                  <div class="team-roster__player-position">{{msgI18n(player.position)}}</div>
-              </div>
-          </div>
-          <!-- Player Details / End -->
-          <!-- FAB (More Info)-->
-          <div class="team-roster__player-fab">
-              <a href="#/team/{{team.nameURL}}/roster/{{player.oid}}" class="team-roster__player-more">
-                  <span class="btn-fab btn-fab--sm"></span>
-                  <span class="team-roster__player-fab-txt">Check the<br>Player's Bio</span>
-              </a>
-          </div>
-          <!-- FAB (More Info) / End -->
-      </div>
-      <!-- Player #0 / End -->
-  </div>
-  <!-- Team Roster: Slider / End -->
-
-
-
   <div class="row">
       <!-- Team Roster: Table -->
       <div class="col-md-8">
           <div class="card card--has-table">
               <div class="card__header">
-                  <h4>Complete Roster</h4>
+                  <h4>Jugadores de {{team?.name}}</h4>
               </div>
               <div class="card__content">
+
                   <div class="table-responsive">
                       <table class="table table--lg team-roster-table">
                           <thead>
@@ -64,16 +22,18 @@
                           </tr>
                           </thead>
                           <tbody>
-                            <tr *ngIf="!team.players">
+                            <tr *ngIf="!team?.players">
                                 <td colspan="6" class="text-center" >Aun no existen Jugadores en el Equipo</td> 
                             </tr>
-                            <tr ng-repeat="player in team.players | orderBy :'number'" *ngIf="team.players">
-                                <td class="team-roster-table__number">{{player.number}}</td>
-                                <td class="team-roster-table__name">{{player.name}} {{player.lastName}}</td>
-                                <td class="team-roster-table__position hidden-xs hidden-sm">{{msgI18n(player.position)}} </td>
-                                <td class="team-roster-table__age">{{player.age}}</td>
-                                <td class="team-roster-table__height">{{player.height}}</td>
-                                <td class="team-roster-table__weight">{{player.weight}} kl</td>
+                           
+
+                            <tr *ngFor="let player of team?.players">
+                                <td class="team-roster-table__number">{{player?.number}}</td>
+                                <td class="team-roster-table__name">{{player?.name}} {{player?.lastName}}</td>
+                                <td class="team-roster-table__position hidden-xs hidden-sm">{{player?.position}} </td>
+                                <td class="team-roster-table__age">{{player}}</td>
+                                <td class="team-roster-table__height">{{player?.height}}</td>
+                                <td class="team-roster-table__weight">{{player?.weight}} kl</td>
                             </tr>
                           </tbody>
                       </table>
@@ -89,7 +49,7 @@
           <!-- Widget: Featured Player - Alternative Extended -->
           <aside class="widget card widget--sidebar widget-player widget-player--alt">
               <div class="widget__title card__header">
-                  <h4>Featured Player</h4>
+                  <h4>Jugador Destacado</h4>
               </div>
               <div class="widget__content card__content">
                   <div class="widget-player__team-logo">
@@ -99,10 +59,10 @@
                       <img src="assets/images/samples/widget-featured-player.png" alt="">
                   </figure>
                   <header class="widget-player__header clearfix">
-                      <div class="widget-player__number">38</div>
+                      <div class="widget-player__number">{{featuredPlayer?.number}}</div>
                       <h4 class="widget-player__name">
-                          <span class="widget-player__first-name">James</span>
-                          <span class="widget-player__last-name">Girobili</span>
+                          <span class="widget-player__first-name">{{featuredPlayer?.name}}</span>
+                          <span class="widget-player__last-name">{{featuredPlayer?.lastName}}</span>
                       </h4>
                   </header>
                   <div class="widget-player__content">
@@ -126,7 +86,7 @@
                   </div>
                   <footer class="widget-player__footer">
                 <span class="widget-player__footer-txt">
-                  1st Shooting Guard
+                  1st {{featuredPlayer?.position}}
                 </span>
                   </footer>
               </div>
