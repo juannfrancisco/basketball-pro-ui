@@ -2,9 +2,18 @@
 # Cloud Build Pipeline
 
 steps:
-    - id: 'Upload Files to Storage'
+  
+    # Install node packages
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [ 'install' ]
+
+# Build productive files
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [ 'run', 'build', '--prod' ]
+
+  - id: 'Upload Files to Storage'
     name: gcr.io/cloud-builders/gsutil
-    args: ['-m','cp', '-r', 'stagging/public/*', 'gs://basketball-pro-ui']
+    args: ['-m','cp', '-r', 'dist/basketball-pro-ui/*', 'gs://basketball-pro-ui']
   
   - id: 'Set Public on Storage'
     name: gcr.io/cloud-builders/gsutil
