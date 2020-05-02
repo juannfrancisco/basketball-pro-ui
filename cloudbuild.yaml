@@ -10,6 +10,10 @@ steps:
 # Build productive files
   - name: 'gcr.io/cloud-builders/npm'
     args: [ 'run', 'build', '--prod' ]
+  
+  - id: 'Prepare deployment GKE'
+    name: 'launcher.gcr.io/google/ubuntu16_04'
+    args: ['ls', '-ltr']
 
   - id: 'Upload Files to Storage'
     name: gcr.io/cloud-builders/gsutil
