@@ -20,4 +20,4 @@ RUN npm install && ng build --prod
 
 
 FROM nginx:1.15 AS final
-COPY --from=base /app/dist/angular-base-proyect /usr/share/nginx/html/
+COPY --from=base /app/dist/basktball-pro-ui /usr/share/nginx/html/
