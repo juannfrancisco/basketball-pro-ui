@@ -1,0 +1,16 @@
+# Copyright MagnoLabs 2020
+# Cloud Build Pipeline
+
+steps:
+  
+    # Install node packages
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [ 'install' ]
+
+# Build productive files
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [ 'run', 'build', '--prod' ]
+
+  - id: 'Upload Files to Storage'
+    name: gcr.io/cloud-builders/gsutil
+    args: ['-m','cp', '-r', 'dist/basktball-pro-ui/*', 'gs://basketball-pro-ui']
