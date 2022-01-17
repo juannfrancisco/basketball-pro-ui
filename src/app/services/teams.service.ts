@@ -1,3 +1,4 @@
+import { TeamStatistics } from './../models/TeamStatistics';
 import { ChampionshipTeam } from './../models/ChampionshipTeam';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -62,6 +63,10 @@ export class TeamsService {
     return this.http.get<Match[]>(environment.apiEndpoint + "teams/n/"+ nameURL + "/matches" );
   }
 
+
+  statistics( nameURL:string ){
+    return this.http.get<TeamStatistics>(environment.apiEndpoint + "teams/n/"+ nameURL + "/statistics" );     
+  }
  
 
 
